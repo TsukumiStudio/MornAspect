@@ -1,28 +1,22 @@
 ﻿using UnityEngine;
 
-namespace MornAspect
+namespace MornLib
 {
     [RequireComponent(typeof(Camera))]
     internal sealed class MornAspectCamera : MornAspectComponentBase
     {
-        [SerializeField] private Camera _targetCamera;
-        [SerializeField, Range(0, 1f)] private float _scale = 1;
-
-        private void Reset()
-        {
-            _targetCamera = GetComponent<Camera>();
-        }
+        [SerializeField, Range(0, 2f), Tooltip("拡大率")] private float _scale = 1;
+        private Camera _targetCamera;
 
         protected override void AdjustAspect()
         {
-            if (!TryGetGlobal(out var global))
-                return;
-            
+            if (!TryGetGlobal(out var global)) return;
+            if (_targetCamera == null) _targetCamera = GetComponent<Camera>();
             var screenRes = new Vector2(Screen.width, Screen.height);
             var currentAspect = screenRes.y / screenRes.x;
             var aimAspect = global.Resolution.y / global.Resolution.x;
             Rect newRect;
-            if (Mathf.Abs(currentAspect - aimAspect) < ASPECT_TOLERANCE || currentAspect <= aimAspect)
+            if (Mathf.Abs(currentAspect - aimAspect) < AspectTolerance || currentAspect <= aimAspect)
             {
                 newRect = new Rect(0, 0, 1, 1);
             }
@@ -40,7 +34,7 @@ namespace MornAspect
             if (_targetCamera.rect != newRect)
             {
                 _targetCamera.rect = newRect;
-                MornAspectGlobal.LogAndSetDirty("Camera Rect Adjusted", _targetCamera);
+                MornAspectGlobal.LogAndSetDirty("カメラサイズ変更", _targetCamera);
             }
         }
     }

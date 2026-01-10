@@ -1,15 +1,15 @@
-﻿using MornGlobal;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace MornAspect
+namespace MornLib
 {
     [CreateAssetMenu(fileName = nameof(MornAspectGlobal), menuName = "Morn/" + nameof(MornAspectGlobal))]
     internal sealed class MornAspectGlobal : MornGlobalBase<MornAspectGlobal>
     {
-        protected override string ModuleName => nameof(MornAspect);
-        [SerializeField] private Vector2 _resolution = new(1920, 1080);
+        public override string ModuleName => "MornAspect";
+        [SerializeField, Tooltip("基準解像度")]
+        private Vector2 _resolution = new(1920, 1080);
         public Vector2 Resolution => _resolution;
-        
+
         internal static void Log(string message)
         {
             I.LogInternal(message);
