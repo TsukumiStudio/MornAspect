@@ -5,15 +5,11 @@ namespace MornLib
     [RequireComponent(typeof(RectTransform))]
     internal sealed class MornAspectFullScreenUI : MornAspectComponentBase
     {
-        [SerializeField, Tooltip("コンテンツ(null可)")] private RectTransform _rect;
-
-        private void Reset()
-        {
-            _rect = GetComponent<RectTransform>();
-        }
+        private RectTransform _rect;
 
         protected override void AdjustAspect()
         {
+            if (_rect == null) _rect = GetComponent<RectTransform>();
             if (!TryGetGlobal(out var global)) return;
             if (_rect != null && _rect.sizeDelta != global.Resolution)
             {
