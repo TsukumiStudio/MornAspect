@@ -34,7 +34,8 @@ namespace MornLib
             if (_targetCamera.rect != newRect)
             {
                 _targetCamera.rect = newRect;
-                MornAspectGlobal.LogAndSetDirty("カメラサイズ変更", _targetCamera);
+                MornAspectGlobal.Logger.Log("カメラサイズ変更");
+                MornAspectGlobal.SetDirty(_targetCamera);
             }
         }
     }
