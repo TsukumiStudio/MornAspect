@@ -15,7 +15,7 @@ namespace MornLib
             {
                 _rect.sizeDelta = global.Resolution;
                 MornAspectGlobal.Logger.Log("サイズ変更");
-                MornAspectGlobal.SetDirty(_rect);
+                MornGlobalUtil.SetDirty(_rect);
             }
         }
     }

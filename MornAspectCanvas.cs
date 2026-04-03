@@ -16,21 +16,21 @@ namespace MornLib
             {
                 _canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
                 MornAspectGlobal.Logger.Log("ScaleMode変更");
-                MornAspectGlobal.SetDirty(_canvasScaler);
+                MornGlobalUtil.SetDirty(_canvasScaler);
             }
 
             if (_canvasScaler.referenceResolution != global.Resolution)
             {
                 _canvasScaler.referenceResolution = global.Resolution;
                 MornAspectGlobal.Logger.Log("Resolutionのサイズ変更");
-                MornAspectGlobal.SetDirty(_canvasScaler);
+                MornGlobalUtil.SetDirty(_canvasScaler);
             }
 
             if (_canvasScaler.screenMatchMode != CanvasScaler.ScreenMatchMode.Expand)
             {
                 _canvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.Expand;
                 MornAspectGlobal.Logger.Log("ScreenMatchMode変更");
-                MornAspectGlobal.SetDirty(_canvasScaler);
+                MornGlobalUtil.SetDirty(_canvasScaler);
             }
         }
     }
