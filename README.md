@@ -1,6 +1,10 @@
 # MornAspect
 
 <p align="center">
+  <img src="src/Editor/MornAspect.png" alt="MornAspect" width="640" />
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/github/license/TsukumiStudio/MornAspect" alt="License" />
 </p>
 
