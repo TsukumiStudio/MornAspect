@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace MornLib
 {
@@ -6,12 +6,17 @@ namespace MornLib
     internal sealed class MornAspectCamera : MornAspectComponentBase
     {
         [SerializeField, Range(0, 2f), Tooltip("拡大率")] private float _scale = 1;
-        private Camera _targetCamera;
+        [SerializeField, HideInInspector] private Camera _targetCamera;
+
+        private void Reset()
+        {
+            _targetCamera = GetComponent<Camera>();
+        }
 
         protected override void AdjustAspect()
         {
             if (!TryGetGlobal(out var global)) return;
-            if (_targetCamera == null) _targetCamera = GetComponent<Camera>();
+            if (_targetCamera == null) return;
             var screenRes = new Vector2(Screen.width, Screen.height);
             var currentAspect = screenRes.y / screenRes.x;
             var aimAspect = global.Resolution.y / global.Resolution.x;

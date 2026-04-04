@@ -1,0 +1,21 @@
+{
+  "name": "com.tsukumistudio.mornaspect",
+  "version": "1.0.0",
+  "displayName": "MornAspect",
+  "description": "画面解像度のアスペクト比に応じてカメラやUIを自動調整するライブラリ。",
+  "unity": "6000.0",
+  "license": "Unlicense",
+  "author": {
+    "name": "TsukumiStudio"
+  },
+  "dependencies": {
+    "com.tsukumistudio.mornglobal": "1.0.0"
+  },
+  "keywords": [
+    "aspect-ratio",
+    "camera",
+    "canvas",
+    "ui",
+    "resolution"
+  ]
+}

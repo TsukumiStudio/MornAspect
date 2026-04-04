@@ -5,13 +5,18 @@ namespace MornLib
     [RequireComponent(typeof(RectTransform))]
     internal sealed class MornAspectFullScreenUI : MornAspectComponentBase
     {
-        private RectTransform _rect;
+        [SerializeField, HideInInspector] private RectTransform _rect;
+
+        private void Reset()
+        {
+            _rect = GetComponent<RectTransform>();
+        }
 
         protected override void AdjustAspect()
         {
-            if (_rect == null) _rect = GetComponent<RectTransform>();
             if (!TryGetGlobal(out var global)) return;
-            if (_rect != null && _rect.sizeDelta != global.Resolution)
+            if (_rect == null) return;
+            if (_rect.sizeDelta != global.Resolution)
             {
                 _rect.sizeDelta = global.Resolution;
                 MornAspectGlobal.Logger.Log("サイズ変更");
