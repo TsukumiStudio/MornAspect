@@ -33,8 +33,6 @@
 *.opendb
 *.VC.db
 
-*LICENSE.meta
-*.md.meta
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
@@ -46,3 +44,7 @@
 *.DS_Store
 
 *crashlytics-build.properties
+
+/LICENSE.meta
+/README.md.meta
+src.meta
